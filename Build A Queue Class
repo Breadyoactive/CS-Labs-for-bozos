@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+class IntQueue {
+    private ArrayList<Integer> arr = new ArrayList<>();
+
+    public IntQueue(){}
+
+    public void add(int item){
+        arr.add(item);
+    }
+
+    public int remove() {
+        return arr.remove(0);
+    }
+
+    public int peek(){
+        return arr.get(0);
+    }
+
+    public int size() {
+        return arr.size();
+    }
+
+    public ArrayList<Integer> print(){
+        return arr;
+    }
+
+    public Boolean isEmpty() {
+        return (size() == 0);
+    }
+}
