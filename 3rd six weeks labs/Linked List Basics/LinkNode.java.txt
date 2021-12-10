@@ -1,0 +1,31 @@
+class LinkNode {
+    private Integer value;
+    private LinkNode ptr;
+    
+    public LinkNode(int val, LinkNode pointer) {
+        value=val;
+        ptr=pointer;
+        
+    }
+    
+    public void setValue(int v) {
+        value=v;
+        
+    }
+    
+    public LinkNode setNext(LinkNode n) {
+        LinkNode temp= ptr;
+        ptr=n;
+        return temp;
+    }
+    
+    public Integer getValue() {
+        return value;
+    }
+    
+    public LinkNode next() {
+        return ptr;
+        
+    }
+
+}

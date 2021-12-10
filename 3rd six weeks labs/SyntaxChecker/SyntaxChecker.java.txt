@@ -1,0 +1,105 @@
+
+
+import java.util.*;
+
+
+public class SyntaxChecker {
+    private ArrayList<String>  tokens= new ArrayList<String>();
+    private Stack<String> syntax;
+    
+public SyntaxChecker(ArrayList<String> t) {
+    tokens=t;
+    syntax= new Stack<String>();
+    
+}
+
+public boolean checkSyntax() {
+    
+    for(int i=0;i<tokens.size(); i++) {
+        String token= tokens.get(i);
+        
+        if(isOpen(token)) {
+            //System.out.println(isOpen(token));
+            syntax.push(token);
+        }
+         if(isClose(token)) {
+             if(syntax.size()==0) {
+                 syntax.push(token);
+             }
+            
+             if(token.equals("}")) {
+                    if(syntax.size()!=0) {
+                        if(syntax.peek().equals("{")) {
+                            syntax.pop();
+                            
+                        }
+                    }
+                    
+                }
+            if(token.equals(")")) {
+                if(syntax.size()!=0) {
+                    if(syntax.peek().equals("(")) {
+                        syntax.pop();
+                        
+                    }
+                }
+                
+            }
+            if(token.equals(">")) {
+                if(syntax.size()!=0) {
+                    if(syntax.peek().equals("<")) {
+                        syntax.pop();
+                    
+                    }
+                }
+                
+            }
+            if(token.equals("]")) {
+                if(syntax.size()!=0) {
+                    if(syntax.peek().equals("[")) {
+                        syntax.pop();
+                        
+                    }
+                }
+                
+            }
+            
+            
+            
+            
+            
+        }
+    }
+    if(syntax.size()>0) {
+        
+        //System.out.println("Stack : " + syntax);
+        return false;
+    }
+    
+    //System.out.println("Stack : " + syntax);
+    return true;
+    
+}
+
+public boolean isOpen(String s) {
+    if("{(<[".indexOf(s)>-1) {
+        return true;
+    }
+    return false;
+    
+}
+
+public boolean isClose(String s) {
+    if("})>]".indexOf(s)>-1) {
+        return true;
+    }
+    return false;
+    
+}
+
+
+    
+}
+
+
+

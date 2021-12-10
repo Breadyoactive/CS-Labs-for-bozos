@@ -1,0 +1,68 @@
+import java.util.*;
+
+class JavaLinkedList {
+      ArrayList<Integer> nums= new ArrayList<Integer>();
+      LinkNode ptr;
+      LinkNode front;
+    public JavaLinkedList(ArrayList<Integer> numbers) {
+        nums=numbers;
+        front= new LinkNode(nums.get(0), null);
+        ptr=front;
+        for(int i=1; i<nums.size(); i++) {
+            ptr.setNext(new LinkNode(nums.get(i),null));
+            ptr= ptr.next();
+            
+        }
+        
+        
+    }
+    
+    public double getSum() {
+        ptr=front;
+        double sum=0;
+        while(ptr!=null) {
+            sum+= ptr.getValue();
+            ptr=ptr.next();
+            
+            
+        }
+        return sum;
+        
+    }
+    
+    public double getAverage() {
+        ptr=front;
+        return getSum()/nums.size();
+        
+    }
+    
+    public int getMin() {
+        int min= Integer.MAX_VALUE;
+        int check=0;
+        ptr=front;
+        while(ptr!=null) {
+            check= ptr.getValue();
+            if(check< min) {
+                min=check;
+            }
+            ptr=ptr.next();
+            
+        }
+        return min;
+    }
+    
+    public int getMax() {
+        int max= Integer.MIN_VALUE;
+        int check=0;
+        ptr=front;
+        while(ptr!=null) {
+            check= ptr.getValue();
+            if(check> max) {
+                max=check;
+            }
+            ptr=ptr.next();
+            
+        }
+        return max;
+    }
+}

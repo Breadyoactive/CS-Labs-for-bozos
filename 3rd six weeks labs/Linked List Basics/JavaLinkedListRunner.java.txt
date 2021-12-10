@@ -1,0 +1,32 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+public class JavaLinkedListRunner {
+
+    public static void main(String[] args) throws IOException {
+        Scanner sc= new Scanner(new File("JavaLinkedList.txt"));
+        while(sc.hasNextLine()) {
+            String numbers= sc.nextLine();
+            String[] numbersArr= numbers.split(" ");
+            ArrayList<Integer> line= new ArrayList<Integer>();
+            
+            for(String number: numbersArr) {
+                line.add(Integer.parseInt(number));
+                
+            }
+            
+            JavaLinkedList jl= new JavaLinkedList(line);
+            System.out.println("SUM:: " + jl.getSum());
+            System.out.println("AVERAGE:: " + jl.getAverage());
+            System.out.println("SMALLEST:: " + jl.getMin());
+            System.out.println("LARGEST:: " + jl.getMax());
+            System.out.println();
+            
+            
+            
+        }
+    
+
+    }
+
+}
