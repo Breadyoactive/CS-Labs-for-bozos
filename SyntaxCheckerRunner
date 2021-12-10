@@ -1,0 +1,33 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SyntaxCheckRunner {
+    public static void main(String args[]) throws IOException {
+        Scanner sc= new Scanner(new File("SyntaxChecker.txt"));
+        
+        SyntaxChecker syn;
+        while(sc.hasNextLine()) {
+            ArrayList<String> tokens1= new ArrayList<String>();
+            String word= sc.nextLine();
+            String[] letters= word.split("");
+            for(String letter: letters) {
+                tokens1.add(letter);
+            }
+            syn= new SyntaxChecker(tokens1);
+            if(syn.checkSyntax()) {
+                System.out.println(word + " is correct.");
+                System.out.println();
+            }
+            if(!syn.checkSyntax()) {
+                System.out.println(word + " is incorrect.");
+                System.out.println();
+            }
+            
+        }
+        
+        
+        
+    }
+}
